@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Підключення Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Підключення стилів-->
+    <link href="main.css" rel="stylesheet"> 
+    <link href="menu.css" rel="stylesheet">
+    <title>Меню</title>
+</head>
+<body>
+<div class="nav-line">
+    <div class="header">
+        <img class="logo" src="img/logo.svg" alt="logo">
+      <ul class="nav nav-underline">
+          <li class="nav-item">
+            <a class="nav-link"  href="main.html">Головна</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Меню</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Акції</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#feedback">Відгуки</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Контакти</a>
+            </li>
+      </ul>
+      <button id="cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <img id="icon-cart" src="icons/fa6-solid_basket-shopping.svg" alt="basket">
+      </button>
+  </div>
+</div>
+
+<div class="content">
+    <form class="search-container" id="search-form">
+        <input id="search-input" name="search-resume" type="text" placeholder="Пошук піци" required>
+        <button id="search-button" type="submit">
+            <img id="search-icon" src="icons/Search.svg" alt="search icon">
+        </button>
+        <input type="hidden" name="action" value="viewResumes">
+    </form>
+
+<!--<div class="examples">
+    <div class="cards-conteiner">
+      <a href="pizza-page.html">
+        <div class="card">
+              <div class="card-img-container">
+                  <img src="img/pizza/4-мяса-crop.png" alt="pizza" style="height: 150px; width: 150px">
+              </div>
+            <div class="row-conteiner">
+                <div class="row"><section>155 грн</section></div>
+                <div class="row">
+                     <button class="arrow">
+                        <img id="info-icon" src="icons/pepicons-pencil_line-y-circle.svg" alt="i">
+                    </button>
+                </div>
+            </div>
+      </a>
+            <div class="row-conteiner">
+                <div class="row"><a href="pizza-page.html">4 м'яса</a></div>
+                <div class="row">
+                    <button class="add-to-cart-mini" >
+                        <img src="icons/fa6-solid_basket-shopping-black.svg" alt="cart">
+                    </button>
+                </div>
+            </div>
+
+           
+            <div class="info-box">Склад: курка, шинка, салямі, мисливські ковбаски, сир, томатний соус</div>
+        </div>
+    </div>
+</div>-->
+
+
+<div class="examples" id="pizzaContainer"></div>
+</div>
+    
+
+    
+
+
+
+<!--БОКОВА ПАНЕЛЬ КОШИКА-->
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Кошик</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      ...
+    </div>
+  </div>
+
+
+
+
+<footer>
+    <img class="logo" src="img/logo.svg" alt="logo">
+    <hr/>
+    <p>© 2025 Pizzetta</p>
+</footer>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const infoIcon = document.getElementById("info-icon");
+        const infoBox = document.querySelector(".info-box");
+    
+        infoIcon.addEventListener("mouseenter", function () {
+            infoBox.style.display = "block"; // Показати
+        });
+    
+        infoIcon.addEventListener("mouseleave", function () {
+            infoBox.style.display = "none"; // Прибрати
+        });
+    });
+    
+</script>
+
+<script>
+  const pizzas = [
+  {
+    name: "4 м'яса",
+    price: 155,
+    image: "img/pizza/4-мяса-crop.png",
+    ingredients: "Склад: курка, шинка, салямі, мисливські ковбаски, сир, томатний соус"
+  },
+  {
+    name: "Баварська",
+    price: 139,
+    image: "img/pizza/баварська-crop.png",
+    ingredients: "Склад: соус томатний, ковбаски баварські, печериці, сир моцарела, перець болгарський,  часникова олія"
+  },
+  {
+    name: "Гавайська",
+    price: 125,
+    image: "img/pizza/гавайська-crop.png",
+    ingredients: "Склад: соус вершковий, цибуля маринована, курка маринована, ананас, сир моцарела"
+  },
+  {
+    name: "Папероні",
+    price: 79,
+    image: "img/pizza/папероні-crop.png",
+    ingredients: "Склад: соус томатний, сир моцарела, помідор"
+  },
+  {
+    name: "Салямі",
+    price: 109,
+    image: "img/pizza/сирна-салямі-crop.png",
+    ingredients: "Склад: соус томатний, салямі, сир моцарела"
+  },
+  {
+    name: "Грецька",
+    price: 189,
+    image: "img/pizza/грецька-crop.png",
+    ingredients: "Склад: соус вершовий, курка маринована, сир моцарела, помідори, салат Айсберг, сир Фелата, маслини, соус бальзамічний"
+  },
+  {
+    name: "Куряча",
+    price: 115,
+    image: "img/pizza/куряча-crop.png",
+    ingredients: "Склад: соус вершково-шпинатний, цибуля маринована, курка маринована, печериці, сир моцарела,  часникова олія"
+  },
+  {
+    name: "Цезар",
+    price: 239,
+    image: "img/pizza/цезар-crop.png",
+    ingredients: "Склад: соус вершковий, курка маринована, сир моцарела, салат Айсберг, Соус Цезар, сир пармезан"
+  }
+
+];
+  const container = document.getElementById("pizzaContainer");
+
+  pizzas.forEach(pizza => {
+    const cardHTML = `
+      <div class="cards-conteiner">
+        <a href="pizza-page.html">
+          <div class="card">
+            <div class="card-img-container">
+              <img src="${pizza.image}" alt="pizza" style="height: 150px; width: 150px">
+            </div>
+            <div class="row-conteiner">
+              <div class="row"><section>${pizza.price} грн</section></div>
+              <div class="row">
+                <button class="arrow">
+                  <img id="info-icon" src="icons/pepicons-pencil_line-y-circle.svg" alt="i">
+                </button>
+              </div>
+            </div>
+        </a>
+        <div class="row-conteiner">
+          <div class="row"><a href="pizza-page.html">${pizza.name}</a></div>
+          <div class="row">
+            <button class="add-to-cart-mini">
+              <img src="icons/fa6-solid_basket-shopping-black.svg" alt="cart">
+            </button>
+          </div>
+        </div>
+        <div class="info-box">${pizza.ingredients}</div>
+      </div>
+    </div>
+    `;
+
+    container.insertAdjacentHTML('beforeend', cardHTML);
+  });
+
+</script>
+</body>
+</html>

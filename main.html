@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Підключення Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Підключення стилів-->
+    <link href="main.css" rel="stylesheet"> 
+
+    <!-- Підключення стилів Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Підключення скрипту Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <title>Головна</title>
+</head>
+<body>
+<div class="first-screen">
+    <div class="header">
+          <img class="logo" src="img/logo.svg" alt="logo">
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Головна</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="menu.html">Меню</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Акції</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#feedback">Відгуки</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Контакти</a>
+              </li>
+        </ul>
+        <button id="cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          <img id="icon-cart" src="icons/fa6-solid_basket-shopping.svg" alt="basket">
+        </button>
+    </div>
+
+    <div class="welcome">
+        <h1>Pizzetta</h1>
+        <p id="p1">
+            Смак справжньої піци тепер у тебе вдома. Обирай улюблені поєднання, 
+            а ми швидко доставимо її до твоїх дверей або підготуємо до самовивозу.  
+            Замовляй миттєво - насолоджуйся довго 
+        </p>
+        <a href="menu.html" class="menu-btn">МЕНЮ</a>
+    </div>
+</div>
+
+<div class="advantages">
+    <h2>Наші переваги</h2>
+    <div class="advantages-container">
+        <div class="advantage-item">
+                <img src="icons/ion_restaurant.svg" alt="forks" style=" margin-bottom: 25px; ">
+                <p>замовлення онлайн</p>
+                <p>Замовляйте піцу легко та швидко. Обирайте страви, додавайте улюблені інгредієнти та оформлюйте замовлення всього за кілька кліків</p>
+        </div>
+        <div class="advantage-item">
+                <img src="icons/material-symbols_delivery-truck-speed-rounded.svg" alt="delivery">
+                <p>доставка або самовивіз</p>
+                <p>Обирайте зручний спосіб отримання замовлення. Доставка – швидко й гаряче до ваших дверей. Самовивіз – без очікування, якщо ви поруч</p>
+        </div>
+        <div class="advantage-item">
+                <img src="icons/mingcute_pizza-line.svg" alt="pizza">
+                <p>особливий рецепт</p>
+                <p>Ми використовуємо унікальні рецепти з ідеальним балансом смаків, щоб кожен шматочок приносив справжнє задоволення</p>
+        </div>      
+    </div>      
+</div>
+
+<div class="feedback" id="feedback">
+    <img id="circle-pizza" src="img/pizza-circle-1.png" alt="pizza">
+    <h2>Відгуки</h2>
+    <div class="feedback-container">
+        <button class="arrow arrow-left">
+          <img src="icons/meteor-icons_angle-left.svg" alt="arrow">
+        </button>
+        <section id="user-fullname">Ім'я Прізвище</section>
+        <section id="user-feedback">
+            Lorem ipsum odor amet, consectetuer adipiscing elit. Venenatis pretium ipsum placerat, habitant curae fames. 
+            Rhoncus inceptos ligula fames dapibus natoque euismod. 
+        </section>
+        <button class="arrow arrow-right">
+          <img src="icons/meteor-icons_angle-right.svg" alt="arrow">
+        </button>
+    </div>
+    <!--<div class="feedback-container">
+      <button class="arrow arrow-left">
+          <img src="icons/meteor-icons_angle-left.svg" alt="arrow">
+      </button>
+      <section id="user-fullname">Завантаження...</section>
+      <section id="user-feedback">Зачекайте, йде завантаження відгуків...</section>
+      <button class="arrow arrow-right">
+          <img src="icons/meteor-icons_angle-right.svg" alt="arrow">
+      </button>
+  </div>-->
+    <!--<div class="enter-feedback">
+      <h3>Залишити відгук</h3>
+      <form method="post" action="http://localhost:8080/pizzaria/main_page.php">
+        <label>Ваше ім'я:</label><br>
+        <input type="text" name="fullname"><br>
+        <label>Ваш відгук:</label><br>
+
+        <div class="text-fb">
+        <textarea name="feed_back" id="fb"></textarea>
+
+        <button class="arrow" type="submit" name="action" value="SendFeedback">
+          <img id="btn-plane" src="icons/fa6-solid_paper-plane.svg" alt="plane">
+        </button>
+      </div>
+      </form>
+    </div>-->
+
+
+  
+    <div class="enter-feedback">
+      <h3>Залишити відгук</h3>
+      <form id="feedbackForm">
+          <label>Ваше ім'я:</label><br>
+          <input type="text" name="fullname" id="fullname" required><br>
+          <label>Ваш відгук:</label><br>
+    
+          <div class="text-fb">
+              <textarea name="feed_back" id="feed_back"></textarea>
+    
+              <button class="arrow" type="submit">
+                  <img id="btn-plane" src="icons/fa6-solid_paper-plane.svg" alt="plane">
+              </button>
+          </div>
+      </form>
+    
+      <div id="responseMessage"></div>
+    </div>
+    
+</div>
+
+<div class="contacts" id="contact">
+    <h2>Контакти</h2>
+    <div class="contacts-conteiner">
+        <div class="column-contact" >
+          <p class="p-title">Адреса</p>
+          <p class="p-text">м.Дніпро, вул. Шевченка, 24</p>
+          
+          <p class="p-title">Час роботи піцерії</p>
+          <p class="p-text">
+            <span>Пн - Нд</span>  
+            <span>8:00- 20:00</span>
+          </p>
+
+          <p class="p-title">Телефон</p>
+          <p class="p-text">+380 66 500 28 02, +380 99 962 79 05</p>
+
+          <p class="p-title">Контакти</p>
+
+          <div class="social-network">
+            <img src="icons/Mail.svg">
+            <p class="p-text">pizzaria@com.ua</p>
+          </div>
+          <div class="social-network">
+            <img src="icons/line-md_instagram.svg">
+            <p class="p-text">@pizza_ria</p>
+          </div>
+
+        </div>
+        <div id="map"></div>
+    </div>
+</div>
+
+<footer>
+    <img class="logo" src="img/logo.svg" alt="logo">
+    <hr/>
+    <p>© 2025 Pizzetta</p>
+</footer>
+
+
+<!--БОКОВА ПАНЕЛЬ КОШИКА-->
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Кошик</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    ...
+  </div>
+</div>
+
+
+<script>
+  // Ініціалізація карти (Дніпро, вул. Шевченка, 24)
+  var map = L.map('map').setView([48.463276, 35.050893], 40);
+
+  // Додаємо OpenStreetMap тайли (безкоштовно)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Додаємо маркер із підписом
+  L.marker([48.463276, 35.050893]).addTo(map)
+    .openPopup();
+</script>
+
+<script>
+document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Не оновлюємо сторінку
+
+  let formData = new FormData(this);
+  formData.append("action", "SendFeedback"); // Додаємо action
+
+  fetch("http://localhost:8080/pizzaria/backend/main_page.php", {
+      method: "POST",
+      body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById("responseMessage").innerHTML = data;
+      document.getElementById("feedbackForm").reset(); // Очистити форму після відправки
+  })
+  /*.then(data => {
+    let messageDiv = document.getElementById("responseMessage");
+    messageDiv.innerHTML = data;
+    messageDiv.style.display = "block";
+    messageDiv.style.color = "white";
+    
+    messageDiv.style.backgroundColor = "blue";
+    messageDiv.style.padding = "10px";
+    messageDiv.style.borderRadius = "5px";
+    messageDiv.style.textAlign = "center";
+})*/
+  .catch(error => console.error("Помилка:", error));
+});
+</script>
+
+<script>
+  
+  let feedbacks = [];
+let currentIndex = 0;
+
+// Завантажуємо відгуки при завантаженні сторінки
+fetch("http://localhost:8080/pizzaria/backend/main_page.php")
+    .then(response => response.json())
+    .then(data => {
+        feedbacks = data;
+        if (feedbacks.length > 0) {
+            updateFeedback(0);
+        }
+    })
+    .catch(error => console.error("Помилка завантаження відгуків:", error));
+
+function updateFeedback(index) {
+    document.getElementById("user-fullname").textContent = feedbacks[index].name + " " + feedbacks[index].surname;
+    document.getElementById("user-feedback").textContent = feedbacks[index].feedback;
+}
+
+// Події на кнопки гортання
+document.querySelector(".arrow-left").addEventListener("click", function () {
+    currentIndex = (currentIndex - 1 + feedbacks.length) % feedbacks.length;
+    updateFeedback(currentIndex);
+});
+
+document.querySelector(".arrow-right").addEventListener("click", function () {
+    currentIndex = (currentIndex + 1) % feedbacks.length;
+    updateFeedback(currentIndex);
+});
+
+</script>
+
+</body>
+</html>

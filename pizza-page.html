@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Підключення Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+        <!-- Підключення стилів-->
+        <link href="main.css" rel="stylesheet"> 
+        <!--<link href="menu.css" rel="stylesheet">-->
+        <link href="pizza-page.css" rel="stylesheet">
+    <title>Сторінка страви</title>
+</head>
+<body>
+    <div class="nav-line">
+        <div class="header">
+            <img class="logo" src="img/logo.svg" alt="logo">
+          <ul class="nav nav-underline">
+              <li class="nav-item">
+                <a class="nav-link" href="main.html">Головна</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="menu.html">Меню</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Акції</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#feedback">Відгуки</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contact">Контакти</a>
+                </li>
+          </ul>
+          <button id="cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <img id="icon-cart" src="icons/fa6-solid_basket-shopping.svg" alt="basket">
+          </button>
+      </div>
+    </div>
+
+    <div class="product-conteiner">
+        <div class="photo">
+            <img src="img/pizza/4-мяса.png" alt="pizza">
+        </div>
+        <div class="description">
+            <p>4-м'яса</p>
+            <p id="params">30см, 150г</p>
+            <p>Склад: курка, шинка, салямі, мисливські ковбаски, сир, томатний соус</p>
+        
+            <div class="row1">
+                <div class="price">155 грн.</div>
+                <div class="quantity-container">
+                    <button class="quantity-btn" onclick="decrease()">−</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button class="quantity-btn" onclick="increase()">+</button>
+                </div>
+                
+                <div class="btn-add-to-cart-maxi">
+                    <button id="add-to-cart-maxi" type="submit">До кошика</button>
+                </div>
+            </div>
+            <div class="row1">
+                <div class="size-selector">
+                  <input type="radio" id="size-s" name="size" value="S">
+                  <label for="size-s">S</label>
+                
+                  <input type="radio" id="size-m" name="size" value="M" checked>
+                  <label for="size-m">M</label>
+                
+                  <input type="radio" id="size-l" name="size" value="L">
+                  <label for="size-l">L</label>
+                </div>
+            </div>        
+        </div>
+    </div>
+
+    <div class="addition">
+      <h3>Доповнення (по 40 г):</h3>
+
+      <div class="grid">
+        <div class="add-card">
+          <img src="img/pizza/бекон.png" alt="add">
+          <div class="add-description">
+            <span>Бекон</span>
+            <p>55 грн.</p>
+          </div>
+          <button class="plus">
+            <ion-icon name="add-outline" id="plus"></ion-icon>
+          </button>
+        </div>
+
+        <div class="add-card">
+          <img src="img/pizza/витчина.png" alt="add">
+          <div class="add-description">
+            <span>Вітчина</span>
+            <p>30 грн.</p>
+          </div>
+          <button class="plus">
+            <ion-icon name="add-outline" id="plus"></ion-icon>
+          </button>
+        </div>
+
+        <div class="add-card">
+          <img src="img/pizza/гриби.png" alt="add">
+          <div class="add-description">
+            <span>Гриби</span>
+            <p>15 грн.</p>
+          </div>
+          <button class="plus">
+            <ion-icon name="add-outline" id="plus"></ion-icon>
+          </button>
+        </div>
+
+        <div class="add-card">
+          <img src="img/pizza/ананас.png" alt="add">
+          <div class="add-description">
+            <span>Ананас</span>
+            <p>25 грн.</p>
+          </div>
+          <button class="plus">
+            <ion-icon name="add-outline" id="plus"></ion-icon>
+          </button>
+        </div>
+
+        <div class="add-card">
+          <img src="img/pizza/оливки.png" alt="add">
+          <div class="add-description">
+            <span>Оливки</span>
+            <p>25 грн.</p>
+          </div>
+          <button class="plus">
+            <ion-icon name="add-outline" id="plus"></ion-icon>
+          </button>
+        </div>
+
+        <div class="add-card">
+          <img src="img/pizza/сир.png" alt="add">
+          <div class="add-description">
+            <span>Сир</span>
+            <p>30 грн.</p>
+          </div>
+          <button class="plus">
+            <ion-icon name="add-outline" id="plus"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pizza-feedback">
+      <div class="columns">
+        <div class="column1" id="feedbackCards">
+          <h3>Відгуки</h3>
+
+          <div class="card border-secondary mb-3" style="width: 400px;">
+            <div class="card-header">
+              <span>Іванова Дарина</span>
+              <section class="stars" id="starRating">
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </section>
+            </div>
+            <div class="card-body text-secondary">
+              <p class="card-text">
+                Я не можу не поділитися своїми враженнями від цієї чудової піци! 
+                Тісто було ідеально тонким і хрустким, а інгредієнти свіжими й ароматними.
+                Пропорції начинки були чудово збалансовані – піца не була занадто жирною, але при цьому насиченою смаком.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column2">
+          <h3>Залишити відгук</h3>
+          <form id="pizzaFeedbackForm">
+            <label>Ваше ім'я:</label><br>
+            <input type="text" name="fullname" id="fullname" required><br>
+            <label>Ваш відгук:</label><br>
+      
+            <div class="text-pz-fb">
+                <textarea name="pizza_feed_back" id="pizza_feed_back"></textarea>
+      
+                <button class="arrow" type="submit">
+                    <img id="btn-pz-fb-plane" src="icons/fa6-solid_paper-plane.svg" alt="plane">
+                </button>
+            </div>
+        </form>
+      
+        <div id="responseMessage"></div>
+        </div>
+        
+        
+      </div>
+    </div>
+
+<footer>
+    <img class="logo" src="img/logo.svg" alt="logo">
+    <hr/>
+    <p>© 2025 Pizzetta</p>
+</footer>
+
+
+<!--БОКОВА ПАНЕЛЬ КОШИКА-->
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Кошик</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      ...
+    </div>
+  </div>
+
+  <script>
+    function decrease() {
+        let input = document.getElementById("quantity");
+        if (input.value > 1) {
+            input.value--;
+        }
+    }
+    
+    function increase() {
+        let input = document.getElementById("quantity");
+        input.value++;
+    }
+  </script>
+
+  <script>
+      // Отримуємо кнопку "До кошика"
+      const addToCartButton = document.getElementById('add-to-cart-maxi');
+
+      // Додаємо слухач події для натискання на кнопку
+      addToCartButton.addEventListener('click', () => {
+      // Змінюємо текст кнопки на "Додано"
+      //addToCartButton.textContent = 'Додано';
+
+      if(addToCartButton.textContent === 'До кошика'){
+        addToCartButton.textContent = 'Додано';
+        addToCartButton.style.backgroundColor = '#D9D9D9';  
+      }
+      else{
+        addToCartButton.textContent = 'До кошика';
+        addToCartButton.style.backgroundColor = '#FFCC00'; 
+      }
+    });
+  </script>
+
+  <script>
+    const sizeRadios = document.querySelectorAll('input[name="size"]');
+    const paramsText = document.getElementById('params');
+    const priceText = document.querySelector('.price');
+  
+    // Параметри для кожного розміру
+    const sizeData = {
+      S: { params: "24см, 100г", price: "125 грн." },
+      M: { params: "30см, 150г", price: "155 грн." },
+      L: { params: "36см, 200г", price: "185 грн." }
+    };
+  
+    sizeRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const selectedSize = radio.value;
+        paramsText.textContent = sizeData[selectedSize].params;
+        priceText.textContent = sizeData[selectedSize].price;
+      });
+    });
+  </script>
+
+  <script>
+    // Отримуємо всі кнопки з класом 'plus'
+    const plusButtons = document.querySelectorAll('.plus');
+
+    plusButtons.forEach(button => {
+      button.addEventListener('click', () => {
+      const icon = button.querySelector('ion-icon'); // Отримуємо іконку всередині кнопки
+
+      if (icon.getAttribute('name') === 'add-outline') {
+        // Якщо іконка - плюс, змінюємо на галочку
+        icon.setAttribute('name', 'checkmark-outline');
+      } else {
+        // Якщо іконка - галочка, змінюємо назад на плюс
+        icon.setAttribute('name', 'add-outline');
+      }
+    });
+  });
+  </script> 
+  
+  
+  <script>
+    const stars = document.querySelectorAll("#starRating ion-icon");
+    let rating = 0;
+  
+    stars.forEach((star, index) => {
+      star.addEventListener("click", () => {
+        rating = index + 1;
+  
+        stars.forEach((s, i) => {
+          if (i < rating) {
+            s.classList.add("active");
+            s.setAttribute("name", "star"); // заповнена зірка
+          } else {
+            s.classList.remove("active");
+            s.setAttribute("name", "star-outline"); // порожня зірка
+          }
+        });
+      });
+    });
+  </script>
+  
+
+  <script>
+    const form = document.getElementById("pizzaFeedbackForm");
+    const feedbackContainer = document.getElementById("feedbackCards");
+  
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Зупиняємо перезавантаження сторінки
+  
+      const name = document.getElementById("fullname").value.trim();
+      const message = document.getElementById("pizza_feed_back").value.trim();
+  
+      if (name && message) {
+        // Створюємо нову картку
+        const card = document.createElement("div");
+        card.className = "card border-secondary mb-3";
+        card.style.width = "400px";
+        card.innerHTML = `
+          <div class="card-header">
+            <span>${name}</span>
+            <section class="stars">
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+            </section>
+          </div>
+          <div class="card-body text-secondary">
+            <p class="card-text">${message}</p>
+          </div>
+        `;
+  
+        feedbackContainer.appendChild(card);
+  
+        // Очистити форму
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
